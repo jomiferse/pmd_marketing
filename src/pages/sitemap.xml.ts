@@ -6,8 +6,10 @@ const routes = [
   { path: "/pricing", changefreq: "monthly", priority: "0.8" },
   { path: "/faq", changefreq: "monthly", priority: "0.8" },
   { path: "/learn", changefreq: "monthly", priority: "0.7" },
-  { path: "/docs", changefreq: "monthly", priority: "0.6" },
-  { path: "/blog", changefreq: "monthly", priority: "0.6" }
+  { path: "/blog", changefreq: "monthly", priority: "0.6" },
+  { path: "/privacy", changefreq: "yearly", priority: "0.4" },
+  { path: "/cookies", changefreq: "yearly", priority: "0.4" },
+  { path: "/legal-advice", changefreq: "yearly", priority: "0.4" }
 ];
 
 export const GET: APIRoute = () => {

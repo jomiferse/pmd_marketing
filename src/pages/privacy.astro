@@ -1,0 +1,59 @@
+---
+import Badge from "../components/Badge.astro";
+import Card from "../components/Card.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy policy"
+  description="Privacy policy for PMD marketing and dashboard services."
+  path="/privacy"
+>
+  <div class="mx-auto max-w-3xl space-y-8">
+    <div class="rounded-3xl border border-white/70 bg-white/70 p-8 text-center shadow-card backdrop-blur">
+      <Badge>Privacy</Badge>
+      <h1 class="mt-3 text-3xl font-semibold text-ink">Privacy policy</h1>
+      <p class="mt-3 text-sm text-slate">
+        This policy explains how PMD collects, uses, and protects information across the marketing site and the PMD dashboard.
+      </p>
+    </div>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">Information we collect</h2>
+      <p class="text-sm text-slate">
+        We collect the minimum data needed to operate PMD: account credentials, billing metadata, and usage data for analytics-only monitoring.
+      </p>
+      <ul class="list-disc space-y-2 pl-5 text-sm text-slate">
+        <li>Account data: email address, authentication tokens, and preferences.</li>
+        <li>Billing data: subscription status and billing identifiers from our payment processor.</li>
+        <li>Usage data: feature interactions, alert delivery metrics, and error logs.</li>
+      </ul>
+    </Card>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">How we use data</h2>
+      <p class="text-sm text-slate">
+        Data is used to deliver analytics-only alerts, secure the platform, and improve performance. We do not sell personal data.
+      </p>
+      <ul class="list-disc space-y-2 pl-5 text-sm text-slate">
+        <li>Operate and secure the PMD dashboard.</li>
+        <li>Process subscriptions and account changes.</li>
+        <li>Measure marketing and product performance.</li>
+      </ul>
+    </Card>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">Retention and security</h2>
+      <p class="text-sm text-slate">
+        We retain data only as long as needed for operations and legal requirements. We use encryption and access controls to protect data.
+      </p>
+    </Card>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">Contact</h2>
+      <p class="text-sm text-slate">
+        For privacy questions, contact support through your dashboard. PMD provides analytics only and does not offer financial advice.
+      </p>
+    </Card>
+  </div>
+</BaseLayout>

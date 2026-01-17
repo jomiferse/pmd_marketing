@@ -5,7 +5,10 @@ const {
   size = "md",
   className = "",
   target,
-  rel
+  rel,
+  as = "a",
+  type = "button",
+  ...rest
 } = Astro.props;
 
 const variantStyles = {
@@ -23,6 +26,12 @@ const sizeStyles = {
 const classes = `inline-flex items-center justify-center rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 ---
 
-<a href={href} class={classes} target={target} rel={rel}>
-  <slot />
-</a>
+{as === "button" ? (
+  <button type={type} class={classes} {...rest}>
+    <slot />
+  </button>
+) : (
+  <a href={href} class={classes} target={target} rel={rel} {...rest}>
+    <slot />
+  </a>
+)}

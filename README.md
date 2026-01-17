@@ -1,6 +1,6 @@
 # PMD Marketing (Astro)
 
-SEO-first marketing site for PMD. The dashboard lives in `pmd_frontend/` and is intended to run on `app.pmd.com`.
+SEO-first marketing site for PMD. The dashboard lives in `pmd_frontend/` and is intended to run on `app.pmdalerts.com`.
 
 ## Requirements
 - Node 24+

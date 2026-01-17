@@ -1,5 +1,11 @@
 ---
-const { items = [], className = "", duration = 22, pauseOnHover = true } = Astro.props;
+const {
+  items = [],
+  className = "",
+  duration = 22,
+  pauseOnHover = true,
+  itemClass = ""
+} = Astro.props;
 const repeatItems = [...items, ...items];
 const pauseClass = pauseOnHover ? "group-hover:[animation-play-state:paused]" : "";
 ---
@@ -13,7 +19,7 @@ const pauseClass = pauseOnHover ? "group-hover:[animation-play-state:paused]" : 
     style={`--duration: ${duration}s;`}
   >
     {repeatItems.map((item, index) => (
-      <div class="shrink-0" key={index}>
+      <div class={`shrink-0 ${itemClass}`} key={index}>
         {item}
       </div>
     ))}

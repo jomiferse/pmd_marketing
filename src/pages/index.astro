@@ -131,7 +131,9 @@ const stats = [
           </p>
           <div class="flex flex-wrap gap-3">
             <Button href={`${APP_URL}/register`} size="lg">Start free</Button>
-            <Button href="#sample-alerts" variant="secondary" size="lg">See sample alerts</Button>
+            <Button as="button" data-modal-open="sample-alerts" variant="secondary" size="lg">
+              See sample alerts
+            </Button>
             <a
               href="/#how-it-works"
               class="inline-flex items-center rounded-full border border-transparent px-5 py-2.5 text-sm font-semibold text-slate transition hover:border-ink/10 hover:bg-white/70"
@@ -172,11 +174,8 @@ const stats = [
 
       <div class="relative z-10 mt-8">
         <Marquee
-          items={activityItems.map((item) => (
-            <div class="rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate">
-              {item}
-            </div>
-          ))}
+          items={activityItems}
+          itemClass="rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate"
         />
       </div>
     </section>
@@ -318,4 +317,96 @@ const stats = [
 
     <CtaBlock />
   </div>
+
+  <div
+    id="sample-alerts-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/60 px-4 py-8"
+    data-modal="sample-alerts"
+    aria-hidden="true"
+  >
+    <div
+      role="dialog"
+      aria-modal="true"
+      class="w-full max-w-2xl rounded-3xl border border-white/80 bg-white p-6 shadow-card sm:p-8"
+    >
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-slate">Demo alerts</p>
+          <h3 class="mt-2 text-2xl font-semibold text-ink">Sample alert cards (static)</h3>
+          <p class="mt-2 text-sm text-slate">
+            These examples show the format and context PMD sends. Analytics only.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="rounded-full border border-ink/10 px-3 py-1 text-sm text-slate hover:border-ink/30"
+          data-modal-close
+        >
+          Close
+        </button>
+      </div>
+      <div class="mt-6 grid gap-4">
+        {demoAlerts.map((alert) => (
+          <div class="rounded-2xl border border-ink/10 bg-white/80 p-4 shadow-soft">
+            <p class="text-sm font-semibold text-ink">{alert.title}</p>
+            <p class="mt-1 text-sm text-slate">{alert.detail}</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.18em] text-slate">
+              {alert.tags.map((tag) => (
+                <span class="rounded-full border border-slate/20 px-3 py-1">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <Button href={`${APP_URL}/register`}>Create account</Button>
+        <Button href="/pricing" variant="secondary">See plans</Button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const modal = document.querySelector('[data-modal="sample-alerts"]');
+    const openers = document.querySelectorAll('[data-modal-open="sample-alerts"]');
+
+    const openModal = () => {
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+      if (!modal) return;
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    };
+
+    openers.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal();
+      });
+    });
+
+    if (modal) {
+      modal.querySelectorAll("[data-modal-close]").forEach((button) => {
+        button.addEventListener("click", closeModal);
+      });
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
+  </script>
 </BaseLayout>

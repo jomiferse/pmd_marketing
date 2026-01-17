@@ -8,8 +8,10 @@ export const GET: APIRoute = () => {
     "Allow: /pricing",
     "Allow: /faq",
     "Allow: /learn",
-    "Allow: /docs",
     "Allow: /blog",
+    "Allow: /privacy",
+    "Allow: /cookies",
+    "Allow: /legal-advice",
     "Disallow: /app",
     "Disallow: /app/",
     `Sitemap: ${SITE_URL}/sitemap.xml`

@@ -1,0 +1,42 @@
+---
+import Badge from "../components/Badge.astro";
+import Card from "../components/Card.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Legal advice disclaimer"
+  description="Legal advice disclaimer for PMD. PMD provides analytics only."
+  path="/legal-advice"
+>
+  <div class="mx-auto max-w-3xl space-y-8">
+    <div class="rounded-3xl border border-white/70 bg-white/70 p-8 text-center shadow-card backdrop-blur">
+      <Badge>Legal</Badge>
+      <h1 class="mt-3 text-3xl font-semibold text-ink">Legal advice disclaimer</h1>
+      <p class="mt-3 text-sm text-slate">
+        PMD provides analytics-only information and does not offer legal, tax, or financial advice.
+      </p>
+    </div>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">No legal advice</h2>
+      <p class="text-sm text-slate">
+        Content on this site and in the PMD dashboard is for informational purposes only and should not be construed as legal advice.
+      </p>
+    </Card>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">No financial advice</h2>
+      <p class="text-sm text-slate">
+        PMD is a read-only analytics product. It does not place trades, provide investment recommendations, or guarantee outcomes.
+      </p>
+    </Card>
+
+    <Card class="space-y-4">
+      <h2 class="text-xl font-semibold text-ink">Seek professional guidance</h2>
+      <p class="text-sm text-slate">
+        If you need legal, tax, or financial advice, consult qualified professionals.
+      </p>
+    </Card>
+  </div>
+</BaseLayout>
