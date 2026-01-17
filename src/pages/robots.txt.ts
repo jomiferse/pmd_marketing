@@ -7,8 +7,6 @@ export const GET: APIRoute = () => {
     "Allow: /",
     "Allow: /pricing",
     "Allow: /faq",
-    "Allow: /learn",
-    "Allow: /blog",
     "Allow: /privacy",
     "Allow: /cookies",
     "Allow: /legal-advice",

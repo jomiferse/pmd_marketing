@@ -4,6 +4,6 @@ export const GET: APIRoute = () =>
   new Response(null, {
     status: 302,
     headers: {
-      Location: "/learn"
+      Location: "/faq"
     }
   });
