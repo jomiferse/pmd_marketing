@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@source "../**/*.{astro,js,ts,tsx}";
+
+@theme {
+  --color-ink: #0f141c;
+  --color-fog: #eef2f6;
+  --color-slate: #3c4b61;
+  --color-accent: #b9f27c;
+  --color-warning: #ffb347;
+  --color-danger: #ff6b6b;
+
+  --shadow-card: 0 20px 60px rgba(15, 20, 28, 0.18);
+  --shadow-soft: 0 8px 30px rgba(15, 20, 28, 0.12);
+
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-marquee: marquee var(--duration, 22s) linear infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  background-image: radial-gradient(circle at 20% 10%, rgba(185, 242, 124, 0.35), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(255, 179, 71, 0.25), transparent 40%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(185, 242, 124, 0.6);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease both;
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

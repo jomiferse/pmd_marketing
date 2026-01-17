@@ -1,0 +1,21 @@
+---
+const { items = [], className = "", duration = 22, pauseOnHover = true } = Astro.props;
+const repeatItems = [...items, ...items];
+const pauseClass = pauseOnHover ? "group-hover:[animation-play-state:paused]" : "";
+---
+
+<div
+  class={`group relative overflow-hidden ${className}`}
+  style="mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);"
+>
+  <div
+    class={`flex w-max gap-4 py-1 animate-marquee ${pauseClass}`}
+    style={`--duration: ${duration}s;`}
+  >
+    {repeatItems.map((item, index) => (
+      <div class="shrink-0" key={index}>
+        {item}
+      </div>
+    ))}
+  </div>
+</div>
