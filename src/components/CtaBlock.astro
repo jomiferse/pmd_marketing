@@ -1,0 +1,26 @@
+---
+import Badge from "./Badge.astro";
+import Button from "./Button.astro";
+import Spotlight from "./Spotlight.astro";
+import { APP_URL } from "../lib/site";
+---
+
+<section class="relative overflow-hidden rounded-[32px] border border-white/70 bg-white/70 p-8 text-center shadow-card backdrop-blur sm:p-12">
+  <Spotlight class="-left-20 -top-20 opacity-70" size={360} />
+  <div class="relative z-10 space-y-4">
+    <Badge>Ready to monitor</Badge>
+    <h2 class="text-3xl font-semibold text-ink sm:text-4xl">
+      Stop refreshing. Start monitoring with PMD.
+    </h2>
+    <p class="text-sm text-slate">
+      Analytics-only Polymarket alerts with clear context and Telegram delivery.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <Button href={`${APP_URL}/register`} size="lg">Create account</Button>
+      <Button href="/pricing" variant="secondary" size="lg">See pricing</Button>
+    </div>
+    <p class="text-xs uppercase tracking-[0.2em] text-slate">
+      Analytics only - Not financial advice - Cancel anytime
+    </p>
+  </div>
+</section>

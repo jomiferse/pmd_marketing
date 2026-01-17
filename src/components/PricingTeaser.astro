@@ -1,0 +1,44 @@
+---
+import Badge from "./Badge.astro";
+import Button from "./Button.astro";
+import Card from "./Card.astro";
+import { plans } from "../data/plans";
+---
+
+<section class="space-y-6">
+  <div class="flex flex-col gap-3 text-center">
+    <Badge>Pricing</Badge>
+    <h2 class="text-3xl font-semibold text-ink">Plans that scale with attention</h2>
+    <p class="text-sm text-slate">
+      Upgrade anytime. Analytics-only monitoring with plan-based controls.
+    </p>
+  </div>
+  <div class="grid gap-6 lg:grid-cols-3">
+    {plans.map((plan) => (
+      <Card class="flex h-full flex-col justify-between">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.2em] text-slate">{plan.name}</p>
+          <p class="text-3xl font-semibold text-ink">{plan.price}</p>
+          <p class="text-sm text-slate">{plan.description}</p>
+        </div>
+        <div class="mt-6 space-y-2 text-sm text-slate">
+          <p>Digest window: {plan.entitlements.digestWindow}</p>
+          <p>Copilot: {plan.entitlements.copilot}</p>
+          <p>FAST mode: {plan.entitlements.fastMode}</p>
+        </div>
+        <div class="mt-6">
+          <Button href="/pricing" variant="secondary">View full pricing</Button>
+        </div>
+      </Card>
+    ))}
+  </div>
+  <div class="text-center text-sm text-slate">
+    <p class="text-xs uppercase tracking-[0.2em] text-slate">Upgrade anytime</p>
+    <a
+      href="/pricing"
+      class="mt-2 inline-flex text-sm text-slate underline decoration-accent decoration-2 underline-offset-4"
+    >
+      Compare all plan details
+    </a>
+  </div>
+</section>

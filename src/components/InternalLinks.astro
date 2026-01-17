@@ -1,0 +1,30 @@
+---
+import Badge from "./Badge.astro";
+import Card from "./Card.astro";
+import { APP_URL } from "../lib/site";
+
+const links = [
+  { label: "Learn", href: "/learn" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Docs", href: "/docs" },
+  { label: "Blog", href: "/blog" },
+  { label: "Login", href: `${APP_URL}/login` },
+  { label: "Create account", href: `${APP_URL}/register` }
+];
+---
+
+<section class="space-y-4">
+  <Badge>Explore PMD</Badge>
+  <Card class="flex flex-wrap items-center gap-4">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class="rounded-full border border-slate/20 bg-white/80 px-4 py-2 text-sm text-slate transition hover:border-ink/30 hover:text-ink"
+      >
+        {link.label}
+      </a>
+    ))}
+  </Card>
+</section>

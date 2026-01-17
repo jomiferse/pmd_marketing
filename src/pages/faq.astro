@@ -1,0 +1,41 @@
+---
+import Accordion from "../components/Accordion.astro";
+import Badge from "../components/Badge.astro";
+import Card from "../components/Card.astro";
+import JsonLd from "../components/JsonLd.astro";
+import Spotlight from "../components/Spotlight.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { faqItems } from "../data/faq";
+import { faqJsonLd } from "../lib/jsonLd";
+---
+
+<BaseLayout
+  title="FAQ for PMD Polymarket alerts"
+  description="Answers about PMD analytics, Polymarket alerts, and prediction market signals. Read-only monitoring and not financial advice."
+  path="/faq"
+>
+  <Fragment slot="head">
+    <JsonLd
+      data={faqJsonLd(
+        faqItems.map((item) => ({
+          question: item.title,
+          answer: item.content
+        }))
+      )}
+    />
+  </Fragment>
+
+  <div class="mx-auto max-w-3xl space-y-8">
+    <div class="relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-8 text-center shadow-card backdrop-blur">
+      <Spotlight class="-left-20 -top-20 opacity-70" size={360} />
+      <div class="relative z-10 space-y-3">
+        <Badge>FAQ</Badge>
+        <h1 class="text-3xl font-semibold text-ink">Answers before you start</h1>
+        <p class="text-sm text-slate">Everything you need to know about PMD.</p>
+      </div>
+    </div>
+    <Card>
+      <Accordion items={faqItems} />
+    </Card>
+  </div>
+</BaseLayout>

@@ -1,16 +1,321 @@
 ---
+import Accordion from "../components/Accordion.astro";
+import AnimatedGradientText from "../components/AnimatedGradientText.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import InternalLinks from "../components/InternalLinks.astro";
+import JsonLd from "../components/JsonLd.astro";
+import Marquee from "../components/Marquee.astro";
+import PricingTeaser from "../components/PricingTeaser.astro";
+import Spotlight from "../components/Spotlight.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { faqTeaserItems } from "../data/faq";
+import {
+  faqJsonLd,
+  organizationJsonLd,
+  softwareApplicationJsonLd,
+  websiteJsonLd
+} from "../lib/jsonLd";
+import { APP_URL } from "../lib/site";
 
+const activityItems = [
+  "New dislocation detected: +11% in 60m",
+  "Polymarket alerts: liquidity vacuum flagged",
+  "Prediction market signals: momentum spike",
+  "Market dislocation alerts: FAST lane fired",
+  "Polymarket monitoring: digest window 30m"
+];
+
+const demoAlerts = [
+  {
+    title: "Election odds repriced +4.2% in 18m",
+    detail: "Low-liquidity spike flagged with momentum confirmation.",
+    tags: ["FAST mode", "Liquidity delta"]
+  },
+  {
+    title: "Macro theme widened +2.1% in 9m",
+    detail: "PMD flagged a volume surge and tightened digest priority.",
+    tags: ["Copilot", "Theme strength"]
+  },
+  {
+    title: "Sports market drift +1.6% in 7m",
+    detail: "Filtered to your watchlist with cap controls applied.",
+    tags: ["Watchlist", "Caps on"]
+  }
+];
+
+const features = [
+  {
+    title: "Dislocation alerts",
+    description: "Flag sudden repricings with context across Polymarket contracts and watchlists."
+  },
+  {
+    title: "FAST mode monitoring",
+    description: "A dedicated lane for high-conviction moves so the fastest signals break through."
+  },
+  {
+    title: "Copilot recommendations",
+    description: "Copilot explains skips and helps you calibrate filters without digging into raw data."
+  },
+  {
+    title: "Telegram delivery",
+    description: "Instant alerts and digests land where you already watch the tape."
+  },
+  {
+    title: "Plan-based controls",
+    description: "Tune digest cadence, theme limits, and caps to keep alerts useful instead of noisy."
+  },
+  {
+    title: "Signal context",
+    description: "Every alert includes move size, liquidity, and momentum to support fast decisions."
+  }
+];
+
+const steps = [
+  {
+    title: "Connect",
+    detail: "Create your account and choose a plan that matches your cadence."
+  },
+  {
+    title: "Set thresholds",
+    detail: "Tune liquidity, volume, move size, and FAST mode monitoring."
+  },
+  {
+    title: "Receive signal",
+    detail: "Get real-time alerts, digest summaries, and a dashboard for review."
+  }
+];
+
+const stats = [
+  { label: "Markets monitored", value: "300+", caption: "Demo telemetry" },
+  { label: "Signals processed", value: "12k", caption: "Demo telemetry" },
+  { label: "Alert delivery", value: "< 60s", caption: "Demo telemetry" }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Polymarket alerts that spot dislocations fast"
+  description="PMD delivers Polymarket alerts, prediction market signals, and market dislocation analytics. Read-only monitoring with Telegram delivery."
+  path="/"
+>
+  <Fragment slot="head">
+    <JsonLd data={organizationJsonLd()} />
+    <JsonLd data={websiteJsonLd()} />
+    <JsonLd data={softwareApplicationJsonLd()} />
+    <JsonLd
+      data={faqJsonLd(
+        faqTeaserItems.map((item) => ({
+          question: item.title,
+          answer: item.content
+        }))
+      )}
+    />
+  </Fragment>
+
+  <div class="space-y-20">
+    <section class="relative overflow-hidden rounded-[32px] border border-white/70 bg-white/70 p-8 shadow-card backdrop-blur sm:p-12">
+      <Spotlight class="-left-28 -top-24 opacity-70" size={520} />
+      <Spotlight class="bottom-[-40px] right-[-40px] opacity-60" color="rgba(255, 179, 71, 0.35)" size={420} />
+      <div class="relative z-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div class="space-y-6">
+          <Badge>Polymarket alerts</Badge>
+          <h1 class="text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+            The move happens fast -
+            <AnimatedGradientText> PMD spots it sooner.</AnimatedGradientText>
+          </h1>
+          <p class="text-base text-slate sm:text-lg">
+            PMD is a read-only analytics layer that scans Polymarket, flags market dislocation alerts, and delivers
+            prediction market signals to Telegram. Analytics only. Not financial advice.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <Button href={`${APP_URL}/register`} size="lg">Start free</Button>
+            <Button href="#sample-alerts" variant="secondary" size="lg">See sample alerts</Button>
+            <a
+              href="/#how-it-works"
+              class="inline-flex items-center rounded-full border border-transparent px-5 py-2.5 text-sm font-semibold text-slate transition hover:border-ink/10 hover:bg-white/70"
+            >
+              How it works
+            </a>
+          </div>
+          <div class="flex flex-wrap gap-4 text-xs uppercase tracking-[0.2em] text-slate">
+            <span>Analytics only</span>
+            <span>Not financial advice</span>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+
+        <div class="grid gap-4">
+          <Card class="animate-fade-up">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate">Live preview</p>
+            <h2 class="mt-3 text-lg font-semibold text-ink">"Dislocation detected: +3.1% in 12m"</h2>
+            <p class="mt-2 text-sm text-slate">
+              PMD flagged a sudden repricing and pushed a Telegram alert with context.
+            </p>
+            <div class="mt-4 flex gap-2 text-xs">
+              <span class="rounded-full bg-ink px-3 py-1 text-white">FAST mode</span>
+              <span class="rounded-full border border-slate/30 px-3 py-1 text-slate">Digest 30m</span>
+            </div>
+          </Card>
+          <Card class="animate-fade-up" style="animation-delay: 120ms;">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate">Copilot notes</p>
+            <p class="mt-3 text-sm text-slate">
+              "Skipped 14 alerts (low liquidity). Sent 3 high-conviction signals with momentum."
+            </p>
+            <div class="mt-4 inline-flex items-center rounded-full border border-ink/10 bg-white/80 px-3 py-1 text-xs text-ink">
+              Confidence +88%
+            </div>
+          </Card>
+        </div>
+      </div>
+
+      <div class="relative z-10 mt-8">
+        <Marquee
+          items={activityItems.map((item) => (
+            <div class="rounded-full border border-white/70 bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate">
+              {item}
+            </div>
+          ))}
+        />
+      </div>
+    </section>
+
+    <section id="sample-alerts" class="space-y-6">
+      <div class="flex flex-col gap-3 text-center">
+        <Badge>Sample alerts</Badge>
+        <h2 class="text-3xl font-semibold text-ink">See the signal format before you sign up</h2>
+        <p class="text-sm text-slate">
+          These static examples show the context PMD delivers. Analytics only.
+        </p>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-3">
+        {demoAlerts.map((alert) => (
+          <Card>
+            <p class="text-sm font-semibold text-ink">{alert.title}</p>
+            <p class="mt-1 text-sm text-slate">{alert.detail}</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.18em] text-slate">
+              {alert.tags.map((tag) => (
+                <span class="rounded-full border border-slate/20 px-3 py-1">{tag}</span>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div class="space-y-4">
+        <Badge>Problem and solution</Badge>
+        <h2 class="text-3xl font-semibold text-ink">Most people miss the move. PMD does not.</h2>
+        <p class="text-sm text-slate">
+          Manual refreshes and noisy feeds hide the exact moment a Polymarket market dislocation happens. PMD runs
+          Polymarket monitoring around the clock and pings you the instant a move breaks your thresholds.
+        </p>
+      </div>
+      <Card class="space-y-4">
+        <p class="text-xs uppercase tracking-[0.2em] text-slate">What changes</p>
+        <div class="space-y-3">
+          <div>
+            <p class="text-sm font-semibold text-ink">Before PMD</p>
+            <p class="text-sm text-slate">
+              You react late and filter noise manually, missing the cleanest dislocations.
+            </p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-ink">With PMD</p>
+            <p class="text-sm text-slate">
+              Prediction market signals arrive with context, so you can decide faster without guessing.
+            </p>
+          </div>
+        </div>
+      </Card>
+    </section>
+
+    <section id="how-it-works" class="space-y-6">
+      <div class="flex flex-col gap-3 text-center">
+        <Badge>How it works</Badge>
+        <h2 class="text-3xl font-semibold text-ink">Three steps to never miss the spike</h2>
+        <p class="text-sm text-slate">Your watchlist, but with signal clarity. Analytics only.</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {steps.map((step, index) => (
+          <Card class="space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 bg-white text-sm font-semibold text-ink">
+                {index + 1}
+              </div>
+              <p class="text-base font-semibold text-ink">{step.title}</p>
+            </div>
+            <p class="text-sm text-slate">{step.detail}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <div class="flex flex-col gap-3 text-center">
+        <Badge>Feature stack</Badge>
+        <h2 class="text-3xl font-semibold text-ink">Signal ops built for speed</h2>
+        <p class="text-sm text-slate">
+          Stop refreshing. Start monitoring with Polymarket alerts that stay readable.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {features.map((feature) => (
+          <Card class="space-y-3">
+            <h3 class="text-lg font-semibold text-ink">{feature.title}</h3>
+            <p class="text-sm text-slate">{feature.description}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <div class="flex flex-col gap-3 text-center">
+        <Badge>Built for power users</Badge>
+        <h2 class="text-3xl font-semibold text-ink">Operator-grade monitoring for Polymarket</h2>
+        <p class="text-sm text-slate">
+          Designed for analysts who need clean prediction market signals, not noisy feeds.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        {stats.map((stat) => (
+          <Card class="text-center">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate">{stat.label}</p>
+            <p class="mt-3 text-3xl font-semibold text-ink">{stat.value}</p>
+            <p class="mt-2 text-xs text-slate">{stat.caption}</p>
+          </Card>
+        ))}
+      </div>
+      <p class="text-center text-xs uppercase tracking-[0.2em] text-slate">
+        Demo telemetry for preview only, not live production metrics.
+      </p>
+    </section>
+
+    <PricingTeaser />
+
+    <section class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <div class="space-y-4">
+        <Badge>FAQ</Badge>
+        <h2 class="text-3xl font-semibold text-ink">Answers before you start</h2>
+        <p class="text-sm text-slate">
+          Get clarity on analytics-only alerts, Telegram delivery, and plan controls.
+        </p>
+        <a
+          href="/faq"
+          class="text-sm text-slate underline decoration-accent decoration-2 underline-offset-4"
+        >
+          Read the full FAQ
+        </a>
+      </div>
+      <Card>
+        <Accordion items={faqTeaserItems} />
+      </Card>
+    </section>
+
+    <InternalLinks />
+
+    <CtaBlock />
+  </div>
+</BaseLayout>

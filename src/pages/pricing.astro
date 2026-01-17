@@ -1,0 +1,30 @@
+---
+import Badge from "../components/Badge.astro";
+import CtaBlock from "../components/CtaBlock.astro";
+import PricingCards from "../components/PricingCards.astro";
+import Spotlight from "../components/Spotlight.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Pricing for PMD Polymarket alerts"
+  description="Compare PMD pricing plans for Polymarket alerts, prediction market signals, and analytics. Analytics only, not financial advice."
+  path="/pricing"
+>
+  <div class="space-y-10">
+    <div class="relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-8 text-center shadow-card backdrop-blur sm:p-10">
+      <Spotlight class="-left-20 -top-20 opacity-70" size={360} />
+      <div class="relative z-10 space-y-4">
+        <Badge>Monthly plans</Badge>
+        <h1 class="text-3xl font-semibold text-ink sm:text-4xl">Pick the cadence that fits your edge</h1>
+        <p class="text-sm text-slate">
+          Upgrade anytime. Your plan controls digest window, Copilot, and FAST mode. Analytics only.
+        </p>
+      </div>
+    </div>
+
+    <PricingCards />
+
+    <CtaBlock />
+  </div>
+</BaseLayout>
