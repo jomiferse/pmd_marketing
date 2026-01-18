@@ -1,6 +1,8 @@
 import type { APIRoute } from "astro";
 import { APP_URL } from "../../lib/site";
 
+export const prerender = false;
+
 export const GET: APIRoute = ({ params }) => {
   const rest = params.path ? `/${params.path}` : "";
   return new Response(null, {
