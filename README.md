@@ -1,19 +1,21 @@
-# PMD Marketing (Astro)
+# PMD Marketing
 
-SEO-first marketing site for PMD. The dashboard lives in `pmd_frontend/` and is intended to run on `app.pmdalerts.com`.
+## Overview
+Astro marketing site for PMD. The product dashboard lives in `../pmd_frontend`.
+This site is static and does not depend on the backend.
 
-## Requirements
-- Node 24+
+## Quickstart
+```bash
+npm install
+npm run dev
+```
 
-## Setup
-1. Copy `.env.example` to `.env` and adjust values.
-2. Install dependencies: `npm install`
+## Configuration
+- Env vars (optional): PUBLIC_SITE_URL, PUBLIC_APP_URL.
+- Deployment (Vercel): connected to the `pmd_marketing` repo and auto-builds on main.
+- Deployment (Vercel): preview builds run on pull requests; env vars are managed in Vercel.
 
-## Commands
-- `npm run dev` - local dev server at `http://localhost:4321`
-- `npm run build` - production build in `dist/`
-- `npm run preview` - preview the production build
-
-## Environment
-- `PUBLIC_SITE_URL` - canonical marketing site URL (for SEO, sitemap, robots)
-- `PUBLIC_APP_URL` - dashboard URL used for CTA links
+## Links
+- Marketing site: https://www.example.com
+- App dashboard: https://app.example.com
+- Dashboard repo: `../pmd_frontend/README.md`
